@@ -6,7 +6,7 @@ import 'package:rl_farm/models/networking.dart';
 import 'models/location.dart';
 
 
-const apiKey = 'ccfe8c99335acef3005f3b5d31120400';
+const apiKey = 'Here you have to add your own apiKey.';
 
 Map<int, Color> color =
 {
