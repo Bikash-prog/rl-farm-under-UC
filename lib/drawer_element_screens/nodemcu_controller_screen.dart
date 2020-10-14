@@ -4,7 +4,7 @@ import 'package:rl_farm/models/location.dart';
 import 'package:rl_farm/models/networking.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const apiKey = 'ccfe8c99335acef3005f3b5d31120400';
+const apiKey = 'you have to add your own api key here';
 
 // {
 // "name":"Polygon Sample",
