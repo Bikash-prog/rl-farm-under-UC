@@ -48,6 +48,21 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
   var soilTemperatureV;
   var moisture;
 
+
+
+  void getSoilData() async {
+    Location location = Location();
+    NetworkHelper networkHelper = NetworkHelper(
+        'http://api.agromonitoring.com/agro/1.0/soil?polyid=5aaa8052cbbbb5000b73ff66&appid=$apiKey');
+    var getData = await networkHelper.getData();
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   void getData() async {
     const url = "https://arduino-96878.firebaseio.com/Data.json";
 
@@ -78,19 +93,6 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
     //      soilTemperature = data.value;
     //    });
     //  });
-  }
-
-  void getSoilData() async {
-    Location location = Location();
-    NetworkHelper networkHelper = NetworkHelper(
-        'http://api.agromonitoring.com/agro/1.0/soil?polyid=5aaa8052cbbbb5000b73ff66&appid=$apiKey');
-    var getData = await networkHelper.getData();
-  }
-
-  @override
-  void initState() {
-    getData();
-    super.initState();
   }
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
