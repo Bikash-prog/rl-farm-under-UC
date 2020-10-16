@@ -1,23 +1,30 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rl_farm/drawer_navigation.dart';
 import 'package:rl_farm/models/weather_containers.dart';
 import 'package:rl_farm/models/weather.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-class HomePage extends StatefulWidget {
+import 'package:firebase_database/firebase_database.dart';
 
+class HomePage extends StatefulWidget {
   HomePage({this.locationWeather});
+
   final locationWeather;
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  final database = FirebaseDatabase.instance;
   WeatherModel weather = WeatherModel();
   var temperature;
   var humidity;
   var description;
   var windSpeed;
   String cityName;
+
+
   @override
   void initState() {
     super.initState();
@@ -25,13 +32,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   void updateContainerUi(dynamic weatherData) {
+    temperature = weatherData['main']['temp'];
+    humidity = weatherData['main']['humidity'];
+    description = weatherData['weather'][0]['description'];
+    windSpeed = weatherData['wind']['speed'];
+    cityName = weatherData['name'];
 
-     temperature = weatherData['main']['temp'];
-     humidity = weatherData['main']['humidity'];
-     description = weatherData['weather'][0]['description'];
-     windSpeed = weatherData['wind']['speed'];
-     cityName = weatherData['name'];
 
+    // To upload data
+
+    // database
+    //     .reference()
+    //     .child("Data")
+    //     .push()
+    //     .child("location")
+    //     .set(cityName)
+    //     .asStream();
   }
 
   @override
@@ -87,21 +103,35 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 weatherContainer(
-                    cityName,
-                    temperature,
-                    humidity,
-                    windSpeed,
-                    description,
-                    MediaQuery.of(context).size.height * .50,
-                    MediaQuery.of(context).size.width * .98,
+                  cityName,
+                  temperature,
+                  humidity,
+                  windSpeed,
+                  description,
+                  MediaQuery
+                      .of(context)
+                      .size
+                      .height * .50,
+                  MediaQuery
+                      .of(context)
+                      .size
+                      .width * .98,
                 ),
               ],
             ),
-            Center(child: Text('Suitable Crops',
-              style: TextStyle(color: Color(0xfff0a500),fontSize: 25, fontWeight: FontWeight.bold),)
-            ),
+            Center(
+                child: Text(
+                  'Suitable Crops',
+                  style: TextStyle(
+                      color: Color(0xfff0a500),
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                )),
             Container(
-              height: MediaQuery.of(context).size.height*.25,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * .25,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -149,30 +179,48 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.circular(10),
         color: Color(0xff7a9bee),
         border: Border.all(
-            color: Colors.transparent,
-            style: BorderStyle.solid,
-            width: 0.75),
+            color: Colors.transparent, style: BorderStyle.solid, width: 0.75),
       ),
-      height: MediaQuery.of(context).size.height*.25,
-      width: MediaQuery.of(context).size.width*.6,
+      height: MediaQuery
+          .of(context)
+          .size
+          .height * .25,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width * .6,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              leading: Text('Crop:',style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),),
-              trailing: Text(cropName,style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),),
+              leading: Text(
+                'Crop:',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              trailing: Text(
+                cropName,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               suitablePeriod,
               style: TextStyle(
                   fontFamily: 'Montserrat',
-                  fontSize: MediaQuery.of(context).size.height*.025,
+                  fontSize: MediaQuery
+                      .of(context)
+                      .size
+                      .height * .025,
                   color: Colors.white,
                   fontWeight: FontWeight.w600),
             ),

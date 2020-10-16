@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rl_farm/apikey.dart';
 import 'home_page.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:rl_farm/models/networking.dart';
 import 'models/location.dart';
 
+final apiKey = apiKeyDipankar; //retrieve from apiKey.dart
 
-const apiKey = 'add your own key';
-
-Map<int, Color> color =
-{
-  50:Color.fromRGBO(117,121,231, 1),
-  100:Color.fromRGBO(117,121,231, 1),
-  200:Color.fromRGBO(117,121,231, 1),
-  300:Color.fromRGBO(117,121,231, 1),
-  400:Color.fromRGBO(117,121,231, 1),
-  500:Color.fromRGBO(117,121,231, 1),
-  600:Color.fromRGBO(117,121,231, 1),
+Map<int, Color> color = {
+  50: Color.fromRGBO(117, 121, 231, 1),
+  100: Color.fromRGBO(117, 121, 231, 1),
+  200: Color.fromRGBO(117, 121, 231, 1),
+  300: Color.fromRGBO(117, 121, 231, 1),
+  400: Color.fromRGBO(117, 121, 231, 1),
+  500: Color.fromRGBO(117, 121, 231, 1),
+  600: Color.fromRGBO(117, 121, 231, 1),
   700:Color.fromRGBO(117,121,231, 1),
   800:Color.fromRGBO(117,121,231, 1),
   900:Color.fromRGBO(117,121,231, 1),

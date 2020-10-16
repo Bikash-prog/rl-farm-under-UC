@@ -161,14 +161,15 @@ List cropDescription = [
   'Introduction: Wheat (Triticum spp.) occupies the prime position among the food crops in the world. In India, it is the second important food crop being next to rice and contributes to the total foodgrain production of the country to the extent of about 25%. Wheat has played a very vital role in stabilizing the foodgrain production in the country over the past few years.'
 'The origin of the durum wheats was probably in the region of Abyssinia, whereas the whole group of soft wheat, which includes the bread wheats, probably originated in the region of Pakistan, SouthWestern and the Southern parts of mountainous Bokhara.'
 'Classification of Indian Wheats:'
-'1. Emmer Wheat (Triticum dicoccum schub L.):'
-'This type was reported to be grown in south i.e. Maharashtra, Tamil Nadu and Karnataka. This type is believed to be developed from T. diccoides koru., a wild form. It is also grown in Spain, Italy, Germany and Russia.'
-'2. Macroni Wheat ( T.durum Desf.) : The durum or macroni wheat, cultivation in India, is considered to be very old. It is a best wheat for drought conditions or under restricted irrigated conditions of Punjab, M.P., Karnataka, Tamil Nadu, Gujarat, West Bengal and H.P. It is used for semolina (suji) preparation.'
-'3. Common Bread Wheat ( T. vulgare Host):'
-'It is a typical wheat of alluvial soils of Indo-Gangetic plains i.e.Punjab, Uttar Pradesh, Bihar and parts of Rajasthan. The bulk of the Indian crop, therefore, consists of this type.'
-'4. Indian Dwarf Wheat (T.spherococcum Mihi.):'
-'This belongs to the club wheat of western countries. This is found in limited areas of M.P., U.P., of India and in Pakistan. These are characterised by very short and compact heads having a shorter grains.'
-'5. Triticum aestivum:'
+      '1. Emmer Wheat (Triticum dicoccum schub L.):'
+      'This type was reported to be grown in south i.e. Maharashtra, Tamil Nadu and Karnataka. This type is believed to be developed from T. diccoides koru., a wild form. It is also grown in Spain, Italy, Germany and Russia.'
+      '2. Macroni Wheat ( T.durum Desf.) : The durum or macroni wheat, cultivation in India, is considered to be very old. It is a best wheat for drought conditions or under restricted irrigated conditions of Punjab, M.P., Karnataka, Tamil Nadu, Gujarat, West Bengal and H.P. It is used for semolina (suji) preparation.'
+      '3. Common Bread Wheat ( T. vulgare Host):'
+      'It is a typical wheat of alluvial soils of Indo-Gangetic plains i.e.Punjab, Uttar Pradesh, Bihar and parts of Rajasthan. The bulk of the Indian crop, therefore, consists of this type.'
+      '4. Indian Dwarf Wheat (T.spherococcum Mihi.):'
+      'This belongs to the club wheat of western countries. This is found in limited areas of M.P., U.P., of India and in Pakistan. These are characterised by very short and compact heads having a shorter grains.'
+      '5. Triticum aestivum:'
       'This is the type presently grown in India in almost all the wheat growing zones. It is used mainly for bread purpose.',
-  'llkkjj',
-  'hhggff'];
+  'About Rice',
+  'About Corn'
+];
