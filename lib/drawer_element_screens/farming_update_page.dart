@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:folding_cell/folding_cell.dart';
+import 'package:slimy_card/slimy_card.dart';
 
 class FarmingUpdatePage extends StatelessWidget {
   @override
@@ -48,20 +49,97 @@ class FarmingUpdatePage extends StatelessWidget {
       ),
       body: Container(
         color: Color(0xffffffff),
-        child: ListView.builder(
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return SimpleFoldingCell.create(
-              frontWidget: _buildFrontWidget(index),
-              innerWidget: _buildInnerWidget(index),
-              cellSize: Size(MediaQuery.of(context).size.width, 125),
-              padding: EdgeInsets.all(15),
-              animationDuration: Duration(milliseconds: 300),
-              borderRadius: 10,
-              onOpen: () => print('$index cell opened'),
-              onClose: () => print('$index cell closed'),
-            );
-          },
+        // child: ListView.builder(
+        //   itemCount: 3,
+        //   itemBuilder: (context, index) {
+        //     return SimpleFoldingCell.create(
+        //       frontWidget: _buildFrontWidget(index),
+        //       innerWidget: _buildInnerWidget(index),
+        //       cellSize: Size(MediaQuery.of(context).size.width, 125),
+        //       padding: EdgeInsets.all(15),
+        //       animationDuration: Duration(milliseconds: 300),
+        //       borderRadius: 10,
+        //       onOpen: () => print('$index cell opened'),
+        //       onClose: () => print('$index cell closed'),
+        //     );
+        //   },
+        // ),
+        child: ListView(
+          children: <Widget>[
+
+            SlimyCard(
+              color: Color(0xff7a9bee),
+              width: MediaQuery.of(context).size.width*.9,
+              topCardHeight: 150,
+              bottomCardHeight: 200,
+              borderRadius: 15,
+              topCardWidget: Text(cropNames[0], style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+              ),
+              bottomCardWidget: Text(
+              'The origin of the durum wheats was probably in the region of Abyssinia,'
+                  ' whereas the whole group of soft wheat, which includes the bread wheats,'
+                  ' probably originated in the region of Pakistan, SouthWestern and the Southern parts of mountainous Bokhara.',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              slimeEnabled: true,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SlimyCard(
+              color: Color(0xff7a9bee),
+              width: MediaQuery.of(context).size.width*.9,
+              topCardHeight: 150,
+              bottomCardHeight: 200,
+              borderRadius: 15,
+              topCardWidget: Text(cropNames[1], style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+              ),
+              bottomCardWidget: Text(
+                'The origin of the durum wheats was probably in the region of Abyssinia,'
+                    ' whereas the whole group of soft wheat, which includes the bread wheats,'
+                    ' probably originated in the region of Pakistan, SouthWestern and the Southern parts of mountainous Bokhara.',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              slimeEnabled: true,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SlimyCard(
+              color: Color(0xff7a9bee),
+              width: MediaQuery.of(context).size.width*.9,
+              topCardHeight: 150,
+              bottomCardHeight: 200,
+              borderRadius: 15,
+              topCardWidget: Text(cropNames[2], style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+              ),
+              bottomCardWidget: Text(
+                'The origin of the durum wheats was probably in the region of Abyssinia,'
+                    ' whereas the whole group of soft wheat, which includes the bread wheats,'
+                    ' probably originated in the region of Pakistan, SouthWestern and the Southern parts of mountainous Bokhara.',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              slimeEnabled: true,
+            ),
+          ],
         ),
       ),
     );
