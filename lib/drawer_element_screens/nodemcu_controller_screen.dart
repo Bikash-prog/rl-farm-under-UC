@@ -1,18 +1,16 @@
 import 'dart:convert';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:rl_farm/apikey.dart';
-import 'package:rl_farm/home_page.dart';
+import 'package:rl_farm/apiKey.dart';
 import 'package:rl_farm/models/location.dart';
 import 'package:rl_farm/models/networking.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
 //const apiKey = 'you have to add your own api key here';
-const apiKey = apiKeyDipankar;
+const apiKey = apiKeyBikash;
 
 // {
 // "name":"Polygon Sample",
@@ -49,6 +47,8 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
   var soilTemperatureV;
   var moisture;
 
+
+
   void getSoilData() async {
     Location location = Location();
     NetworkHelper networkHelper = NetworkHelper(
@@ -68,22 +68,16 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body);
-      // print(extractedData);
 
-      setState(() {
-        location = extractedData['location'];
-        moisture = extractedData['Moisture'];
-        soilTemperature = extractedData['Soil Temperature'];
-        soilTemperatureV = extractedData['Soil Temperature v'];
-      });
+      location = extractedData['Location'];
+      moisture = extractedData['Moisture'];
+      soilTemperature = extractedData['Soil Temperature'];
+      soilTemperatureV = extractedData['Soil Temperature v'];
 
-      print(location.toString() +
-          "\n" +
-          moisture.toString() +
-          "\n" +
-          soilTemperature.toString() +
-          "\n" +
-          soilTemperatureV.toString());
+      print(location);
+      print(moisture);
+      print(soilTemperature);
+      print(soilTemperatureV);
     } catch (err) {
       throw err;
     }
@@ -111,7 +105,7 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
         title: RichText(
           text: TextSpan(children: [
             TextSpan(
-              text: 'RT',
+              text: 'RL',
               style: TextStyle(
                   shadows: [
                     Shadow(
@@ -156,8 +150,14 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
                 height: 10,
               ),
               Container(
-                height: MediaQuery.of(context).size.height * .50,
-                width: MediaQuery.of(context).size.width * .98,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * .50,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width * .98,
                 decoration: BoxDecoration(
                     color: Color(0xff7a9bee),
                     borderRadius: BorderRadius.circular(10)),
@@ -186,8 +186,7 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
                               fontWeight: FontWeight.bold),
                         ),
                         trailing: Text(
-                          // '6°C',
-                          '$soilTemperature°C',
+                          '$soilTemperature°C', //6
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 25,
@@ -207,7 +206,6 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
                               fontWeight: FontWeight.bold),
                         ),
                         trailing: Text(
-                          // '17.3%',
                           '$moisture%', //17.3
                           style: TextStyle(
                               color: Colors.white,
@@ -228,7 +226,6 @@ class _NodeMcuControllerState extends State<NodeMcuController> {
                               fontWeight: FontWeight.bold),
                         ),
                         trailing: Text(
-                          // '9 °C',
                           '$soilTemperatureV °C', //9
                           style: TextStyle(
                               color: Colors.white,

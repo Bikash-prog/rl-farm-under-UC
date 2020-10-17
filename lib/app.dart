@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rl_farm/apikey.dart';
+import 'package:rl_farm/apiKey.dart';
 import 'home_page.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:rl_farm/models/networking.dart';
 import 'models/location.dart';
 
-final apiKey = apiKeyDipankar; //retrieve from apiKey.dart
+final apiKey = apiKeyBikash; //retrieve from apiKey.dart
 
 Map<int, Color> color = {
   50: Color.fromRGBO(117, 121, 231, 1),

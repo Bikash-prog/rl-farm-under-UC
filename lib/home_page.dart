@@ -31,6 +31,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   void updateContainerUi(dynamic weatherData) {
+    setState(() {
+      if(weatherData==null){
+        temperature =0;
+        humidity = 0;
+        description = 'Error';
+        windSpeed = 0;
+        cityName = 'Null';
+        return;
+      }
+    });
     temperature = weatherData['main']['temp'];
     humidity = weatherData['main']['humidity'];
     description = weatherData['weather'][0]['description'];
