@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rl_farm/apiKey.dart';
+import 'package:rl_farm/apikey.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'home_page.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:rl_farm/models/networking.dart';
 import 'models/location.dart';
 
-final apiKey = apiKeyBikash; //retrieve from apiKey.dart
+final apiKey = apiKeyDipankar; //retrieve from apiKey.dart
 
 Map<int, Color> color = {
   50: Color.fromRGBO(117, 121, 231, 1),
@@ -16,36 +20,33 @@ Map<int, Color> color = {
   400: Color.fromRGBO(117, 121, 231, 1),
   500: Color.fromRGBO(117, 121, 231, 1),
   600: Color.fromRGBO(117, 121, 231, 1),
-  700:Color.fromRGBO(117,121,231, 1),
-  800:Color.fromRGBO(117,121,231, 1),
-  900:Color.fromRGBO(117,121,231, 1),
+  700: Color.fromRGBO(117, 121, 231, 1),
+  800: Color.fromRGBO(117, 121, 231, 1),
+  900: Color.fromRGBO(117, 121, 231, 1),
 };
-
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    MaterialColor customColor = MaterialColor(0xff7579e7,color);
+    MaterialColor customColor = MaterialColor(0xff7579e7, color);
 
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp]
-    );
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-         theme: ThemeData(
-           primarySwatch: customColor,
-         ),
-        home: LoadingScreen(),
+      theme: ThemeData(
+        primarySwatch: customColor,
+      ),
+      home: LoadingScreen(),
     );
   }
 }
+
 class LoadingScreen extends StatefulWidget {
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -54,12 +55,33 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   void getLocationData() async {
     Location location = Location();
-    await location.getCurrentLocation();
-    NetworkHelper networkHelper = NetworkHelper('https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
+    await location.getCurrentLocation().timeout(Duration(seconds: 5),
+        onTimeout: () async {
+      final weatherDataPrefs = await SharedPreferences.getInstance();
+      if (!weatherDataPrefs.containsKey("weatherDataPrefs")) {
+        return;
+      }
+      final weatherData =
+          await json.decode(weatherDataPrefs.getString("weatherDataPrefs"));
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(locationWeather: weatherData),
+          ));
+    });
+    NetworkHelper networkHelper = NetworkHelper(
+        'https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
     var weatherData = await networkHelper.getData();
-    Navigator.push(context, MaterialPageRoute(
-        builder: (context) => HomePage(locationWeather: weatherData),
-    ));
+
+    final weatherDataPrefs = await SharedPreferences.getInstance();
+
+    weatherDataPrefs.setString("weatherDataPrefs", json.encode(weatherData));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(locationWeather: weatherData),
+        ));
   }
 
   @override
@@ -74,4 +96,3 @@ class _LoadingScreenState extends State<LoadingScreen> {
     );
   }
 }
-

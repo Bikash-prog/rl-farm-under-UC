@@ -32,21 +32,21 @@ class _HomePageState extends State<HomePage> {
 
   void updateContainerUi(dynamic weatherData) {
     setState(() {
-      if(weatherData==null){
-        temperature =0;
+      if (weatherData == null) {
+        temperature = 0;
         humidity = 0;
-        description = 'Error';
+        description = 0;
         windSpeed = 0;
-        cityName = 'Null';
+        cityName = "Please check your internet connection or turn on location";
         return;
       }
     });
+
     temperature = weatherData['main']['temp'];
     humidity = weatherData['main']['humidity'];
     description = weatherData['weather'][0]['description'];
     windSpeed = weatherData['wind']['speed'];
     cityName = weatherData['name'];
-
 
     // To upload data
     // final database = FirebaseDatabase.instance;
