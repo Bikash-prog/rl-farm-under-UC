@@ -16,10 +16,9 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Rl Farm User',
-                style: TextStyle(
-                  fontSize: 20
-                ),
+              accountName: Text(
+                'RT Farm User',
+                style: TextStyle(fontSize: 20),
               ),
               accountEmail:  Text('Bot action control and\nGlobal updates about farming'),
               currentAccountPicture: GestureDetector(

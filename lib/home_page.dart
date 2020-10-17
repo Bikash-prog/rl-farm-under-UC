@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final database = FirebaseDatabase.instance;
   WeatherModel weather = WeatherModel();
   var temperature;
   var humidity;
@@ -40,12 +39,12 @@ class _HomePageState extends State<HomePage> {
 
 
     // To upload data
-
+    // final database = FirebaseDatabase.instance;
     // database
     //     .reference()
     //     .child("Data")
     //     .push()
-    //     .child("location")
+    //     .child("Location2")
     //     .set(cityName)
     //     .asStream();
   }
@@ -58,7 +57,7 @@ class _HomePageState extends State<HomePage> {
         title: RichText(
           text: TextSpan(children: [
             TextSpan(
-              text: 'RL',
+              text: 'RT',
               style: TextStyle(
                   shadows: [
                     Shadow(
